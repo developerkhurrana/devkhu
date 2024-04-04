@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
@@ -16,6 +18,11 @@ export default function HeroSection(props: Props) {
     loop: true,
     delaySpeed: 2000,
   });
+
+  const handleContactClick = () => {
+    window.location.href = "mailto:thekshitijkhurrana@gmail.com";
+  };
+
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center max-w-7xl">
       <h2 className="pb-2 text-sm uppercase text-white tracking-[15px]">
@@ -25,10 +32,16 @@ export default function HeroSection(props: Props) {
         <span className="mr-3">{text}</span>
         <Cursor cursorColor="green" />
       </h1>
-      <Link href={"mailto:thekshitijkhurrana@gmail.com"}>
-        <a className="inline-block mt-10 group">
+      <Link href="mailto:thekshitijkhurrana@gmail.com">
+        <button
+          className="inline-block mt-10 group"
+          onClick={(e) => {
+            e.preventDefault();
+            handleContactClick();
+          }}
+        >
           <Title text="Contact me" />
-        </a>
+        </button>
       </Link>
     </div>
   );
